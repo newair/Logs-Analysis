@@ -15,9 +15,9 @@ This project referes to Udacity fullstack web development Log Analysis Tool Proj
 * Checkout and run Udacity vagrant file ( This step is optional You can configure it in       your own machine as well).
   (https://github.com/udacity/fullstack-nanodegree-vm)
 * Install virtual box and vagrant ( This step is optional You can configure it in             your own machine as well).
-* Install postgresql.
-* Install the dataset newsdata.sql by psql -d news -f newsdata.sql.
-* Install psycopg2 using requirments.txt (pip install -r requirements.txt).
+* Install postgresql (If not using VM above).
+* Install the dataset newsdata.sql by psql -d news -f newsdata.sql (If not using VM above).
+* Install psycopg2 (If not using VM above).
 * Create views specified below.
 * Run reporting-tool.py (python reporting-tool.py).
 
@@ -34,6 +34,6 @@ This project referes to Udacity fullstack web development Log Analysis Tool Proj
 
 ## Views to be created
 
-* Create view path_count as select path,count(*) as visits  from log group by path;
-* create view failed_requests as SELECT time::date as date,ROUND(100.0 * SUM(CASE WHEN        status != '200 OK' THEN 1 ELSE 0 END)/COUNT(*),2) AS pct FROM log group by time::date;
+* create view path_count as select path,count(*) as visits  from log group by path;
+* create view failed_requests as select time::date as date,round(100.0 * sum(case when        status != '200 OK' then 1 else 0 end)/count(*),2) as pct from log group by time::date;
 
